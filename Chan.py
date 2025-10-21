@@ -22,7 +22,7 @@ class CChan:
         code,
         begin_time=None,
         end_time=None,
-        data_src: Union[DATA_SRC, str] = DATA_SRC.BAO_STOCK,
+        data_src: Union[DATA_SRC, str] = "custom:AkShareAPI.CAkShare",
         lv_list=None,
         config=None,
         autype: AUTYPE = AUTYPE.QFQ,
@@ -171,8 +171,8 @@ class CChan:
     def GetStockAPI(self):
         _dict = {}
         if self.data_src == DATA_SRC.BAO_STOCK:
-            from DataAPI.BaoStockAPI import CBaoStock
-            _dict[DATA_SRC.BAO_STOCK] = CBaoStock
+            from DataAPI.AkShareAPI import CAkShare
+            _dict[DATA_SRC.BAO_STOCK] = CAkShare
         elif self.data_src == DATA_SRC.CCXT:
             from DataAPI.ccxt import CCXT
             _dict[DATA_SRC.CCXT] = CCXT
